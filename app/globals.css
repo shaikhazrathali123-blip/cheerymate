@@ -1,0 +1,391 @@
+@import "tailwindcss";
+
+/* =====================================================================
+   CHERRYMATE DESIGN SYSTEM — "Violet Glass" 💜
+   ---------------------------------------------------------------------
+   Deep violet glassmorphism · glowing radar blobs · frosted pills.
+   Dark: near-black with a purple glow rising from the bottom.
+   Light: frosted lavender-white with a faint map grid; black active pills.
+   Every colour, radius, shadow and motion value lives here — change a
+   token once and the whole app follows (light + dark).
+   Utilities: glass, glass-strong, pop (glass card), pop-lg, pop-soft,
+   pop-press (squish on tap), neon (glow), brand-gradient, funky-text.
+   ===================================================================== */
+
+:root {
+  /* Brand — electric violet → fuchsia */
+  --brand: #8b2cf5;
+  --brand-strong: #7516e0;
+  --brand-ink: #ffffff;
+  --brand-soft: #f1e6ff;
+  --brand-glow: rgba(139, 44, 245, 0.35);
+  --accent: #d946ef;
+
+  /* Soft violet-family accents (badges, reason tags, confetti) */
+  --sun: #e9ddff;
+  --mint: #f5d0fe;
+  --lilac: #c4b5fd;
+  --sky: #ddd6fe;
+  --peach: #fce7f3;
+  --pastel-ink: #1b0b33; /* text on any accent */
+
+  /* Surfaces */
+  --bg: #f6f3fa;
+  --bg-elevated: #ffffff;
+  --surface: #ffffff;
+  --surface-2: #f0ebf7;
+  --glass: rgba(255, 255, 255, 0.72);
+  --glass-strong: rgba(255, 255, 255, 0.9);
+  --glass-border: rgba(255, 255, 255, 0.95);
+  --overlay: rgba(20, 10, 35, 0.35);
+
+  /* Text */
+  --ink: #0f0b16;
+  --ink-2: #2e2640;
+  --muted: #7c7391;
+  --line: #e8e1f2;
+
+  /* Glass card edge + soft violet shadows */
+  --pop-border: rgba(15, 11, 22, 0.06);
+  --pop-shadow-sm: 0 4px 14px -6px rgba(91, 33, 182, 0.28);
+  --pop-shadow: 0 10px 30px -12px rgba(91, 33, 182, 0.3);
+  --pop-shadow-lg: 0 24px 50px -18px rgba(91, 33, 182, 0.4);
+  --soft-shadow-line: 0 6px 20px -12px rgba(91, 33, 182, 0.22);
+
+  /* Navigation — black active pill in light (reference) */
+  --nav-bg: rgba(255, 255, 255, 0.7);
+  --nav-active: #0f0b16;
+  --nav-active-ink: #ffffff;
+
+  /* Chips */
+  --chip-bg: rgba(255, 255, 255, 0.9);
+  --chip-ink: #2e2640;
+  --chip-active: #0f0b16;
+  --chip-active-ink: #ffffff;
+
+  /* Status / compatibility rings */
+  --success: #16a34a;
+  --warning: #f59e0b;
+  --danger: #e5484d;
+  --score-high: #22c55e;
+  --score-mid: #f59e0b;
+  --score-low: #a1a1aa;
+
+  /* Radar */
+  --ring-1: rgba(168, 85, 247, 0.12);
+  --ring-2: rgba(168, 85, 247, 0.2);
+  --ring-3: rgba(168, 85, 247, 0.34);
+  --ring-edge: rgba(255, 255, 255, 0.75);
+  --ring-core: #0f0b16;
+  --ring-core-ink: #ffffff;
+
+  /* Page background: faint map grid + violet glow from below */
+  --page-glow:
+    radial-gradient(120% 55% at 50% 112%, rgba(192, 132, 252, 0.42) 0%, rgba(232, 121, 249, 0.12) 45%, transparent 72%),
+    linear-gradient(rgba(15, 11, 22, 0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(15, 11, 22, 0.025) 1px, transparent 1px);
+  --page-glow-size: 100% 100%, 44px 44px, 44px 44px;
+
+  --scrim: rgba(15, 11, 22, 0.88);
+
+  /* Chat */
+  --bubble-me: #8b2cf5;
+  --bubble-me-ink: #ffffff;
+  --bubble-them: #ffffff;
+  --bubble-them-ink: #0f0b16;
+
+  /* Map */
+  --map-water: #e4daf5;
+  --map-park: #ece6f4;
+
+  /* Shape & depth */
+  --radius-card: 1.75rem;
+  --radius-sheet: 2rem;
+  --shadow-soft: 0 10px 30px -14px rgba(91, 33, 182, 0.28);
+  --shadow-card: 0 24px 48px -22px rgba(91, 33, 182, 0.4);
+  --shadow-nav: 0 14px 40px -14px rgba(91, 33, 182, 0.35);
+
+  /* Layout */
+  --nav-h: 4.5rem;
+  --safe-top: env(safe-area-inset-top, 0px);
+  --safe-bottom: env(safe-area-inset-bottom, 0px);
+  --safe-left: env(safe-area-inset-left, 0px);
+  --safe-right: env(safe-area-inset-right, 0px);
+
+  color-scheme: light;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --brand: #a855f7;
+    --brand-strong: #9333ea;
+    --brand-soft: rgba(168, 85, 247, 0.16);
+    --brand-glow: rgba(168, 85, 247, 0.55);
+    --accent: #e879f9;
+
+    --bg: #07050b;
+    --bg-elevated: #120c1c;
+    --surface: #160f22;
+    --surface-2: #1f1530;
+    --glass: rgba(42, 22, 70, 0.45);
+    --glass-strong: rgba(42, 22, 70, 0.75);
+    --glass-border: rgba(255, 255, 255, 0.1);
+    --overlay: rgba(0, 0, 0, 0.6);
+
+    --ink: #f7f2ff;
+    --ink-2: #dcd2ee;
+    --muted: #9c90b4;
+    --line: rgba(255, 255, 255, 0.08);
+
+    --pop-border: rgba(255, 255, 255, 0.1);
+    --pop-shadow-sm: 0 4px 16px -4px rgba(168, 85, 247, 0.45);
+    --pop-shadow: 0 10px 34px -10px rgba(168, 85, 247, 0.5);
+    --pop-shadow-lg: 0 24px 60px -16px rgba(168, 85, 247, 0.6);
+    --soft-shadow-line: 0 8px 30px -14px rgba(0, 0, 0, 0.7);
+
+    --nav-bg: rgba(40, 20, 70, 0.5);
+    --nav-active: linear-gradient(135deg, rgba(192, 132, 252, 0.6), rgba(126, 34, 206, 0.6));
+    --nav-active-ink: #ffffff;
+
+    --chip-bg: rgba(168, 85, 247, 0.14);
+    --chip-ink: #e9ddff;
+    --chip-active: linear-gradient(135deg, rgba(192, 132, 252, 0.65), rgba(147, 51, 234, 0.65));
+    --chip-active-ink: #ffffff;
+
+    --ring-1: rgba(168, 85, 247, 0.14);
+    --ring-2: rgba(168, 85, 247, 0.24);
+    --ring-3: rgba(168, 85, 247, 0.42);
+    --ring-edge: rgba(216, 180, 254, 0.25);
+    --ring-core: rgba(168, 85, 247, 0.55);
+    --ring-core-ink: #ffffff;
+
+    --page-glow:
+      radial-gradient(140% 62% at 50% 115%, rgba(168, 85, 247, 0.8) 0%, rgba(126, 34, 206, 0.35) 40%, transparent 75%),
+      linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+
+    --scrim: rgba(7, 5, 11, 0.9);
+
+    --bubble-me: #9333ea;
+    --bubble-them: #1f1530;
+    --bubble-them-ink: #f7f2ff;
+
+    --map-water: #1a1230;
+    --map-park: #140e20;
+
+    --shadow-soft: 0 10px 30px -12px rgba(0, 0, 0, 0.6);
+    --shadow-card: 0 24px 48px -20px rgba(0, 0, 0, 0.8);
+    --shadow-nav: 0 14px 40px -12px rgba(168, 85, 247, 0.45);
+
+    color-scheme: dark;
+  }
+}
+
+@theme inline {
+  --color-brand: var(--brand);
+  --color-brand-strong: var(--brand-strong);
+  --color-brand-ink: var(--brand-ink);
+  --color-brand-soft: var(--brand-soft);
+  --color-accent: var(--accent);
+  --color-sun: var(--sun);
+  --color-mint: var(--mint);
+  --color-lilac: var(--lilac);
+  --color-sky: var(--sky);
+  --color-peach: var(--peach);
+  --color-pastel-ink: var(--pastel-ink);
+  --color-bg: var(--bg);
+  --color-bg-elevated: var(--bg-elevated);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-ink: var(--ink);
+  --color-ink-2: var(--ink-2);
+  --color-muted: var(--muted);
+  --color-line: var(--line);
+  --color-success: var(--success);
+  --color-warning: var(--warning);
+  --color-danger: var(--danger);
+  --color-overlay: var(--overlay);
+
+  --radius-card: var(--radius-card);
+  --radius-sheet: var(--radius-sheet);
+  --shadow-soft: var(--shadow-soft);
+  --shadow-card: var(--shadow-card);
+  --shadow-nav: var(--shadow-nav);
+
+  --font-sans: var(--font-body), ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --font-display: var(--font-funky), var(--font-body), ui-sans-serif, system-ui, sans-serif;
+
+  --animate-radar: radar 3.2s ease-out infinite;
+  --animate-float: float 6s ease-in-out infinite;
+  --animate-shimmer: shimmer 1.4s linear infinite;
+  --animate-pop: pop 0.5s cubic-bezier(0.2, 1.4, 0.4, 1) both;
+  --animate-wiggle: wiggle 2.4s ease-in-out infinite;
+  --animate-jelly: jelly 0.5s ease both;
+  --animate-blob: blob 14s ease-in-out infinite;
+  --animate-glow: glow 3s ease-in-out infinite;
+}
+
+@keyframes radar {
+  0% { transform: scale(0.6); opacity: 0.9; }
+  100% { transform: scale(1.6); opacity: 0; }
+}
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-7px); }
+}
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+@keyframes pop {
+  0% { transform: scale(0.4); opacity: 0; }
+  100% { transform: scale(1); opacity: 1; }
+}
+@keyframes wiggle {
+  0%, 80%, 100% { transform: rotate(0deg); }
+  85% { transform: rotate(-8deg); }
+  90% { transform: rotate(8deg); }
+  95% { transform: rotate(-4deg); }
+}
+@keyframes jelly {
+  0% { transform: scale(1, 1); }
+  30% { transform: scale(1.12, 0.88); }
+  50% { transform: scale(0.92, 1.08); }
+  70% { transform: scale(1.04, 0.96); }
+  100% { transform: scale(1, 1); }
+}
+@keyframes blob {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33% { transform: translate(4%, -3%) scale(1.04); }
+  66% { transform: translate(-3%, 4%) scale(0.97); }
+}
+@keyframes glow {
+  0%, 100% { filter: drop-shadow(0 0 6px var(--brand-glow)); }
+  50% { filter: drop-shadow(0 0 16px var(--brand-glow)); }
+}
+
+/* ------------------------------ Base ------------------------------ */
+@layer base {
+  html {
+    -webkit-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: transparent;
+    text-rendering: optimizeLegibility;
+  }
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--font-sans);
+    font-size: 16px; /* ≥16px prevents iOS zoom on focus */
+    min-height: 100dvh;
+    overscroll-behavior-y: none;
+    -webkit-font-smoothing: antialiased;
+  }
+  h1, h2, h3 {
+    font-family: var(--font-display);
+    letter-spacing: -0.025em;
+  }
+  input, textarea, select { font-size: 16px; }
+  button, a, [role="button"], label, nav {
+    -webkit-user-select: none;
+    user-select: none;
+    -webkit-touch-callout: none;
+  }
+  button { cursor: pointer; }
+  :focus-visible {
+    outline: 2px solid var(--brand);
+    outline-offset: 2px;
+  }
+  ::selection { background: var(--brand-soft); }
+  img { -webkit-user-drag: none; }
+}
+
+/* --------------------------- Utilities ---------------------------- */
+@utility glass {
+  background: var(--glass);
+  border: 1px solid var(--glass-border);
+  backdrop-filter: blur(22px) saturate(170%);
+  -webkit-backdrop-filter: blur(22px) saturate(170%);
+}
+@utility glass-strong {
+  background: var(--glass-strong);
+  border: 1px solid var(--glass-border);
+  backdrop-filter: blur(26px) saturate(170%);
+  -webkit-backdrop-filter: blur(26px) saturate(170%);
+}
+/* Glass card edge + violet glow (was the sticker style) */
+@utility pop {
+  border: 1px solid var(--pop-border);
+  box-shadow: var(--pop-shadow);
+}
+@utility pop-lg {
+  border: 1px solid var(--pop-border);
+  box-shadow: var(--pop-shadow-lg);
+}
+@utility pop-soft {
+  border: 1px solid var(--line);
+  box-shadow: var(--soft-shadow-line);
+}
+@utility pop-press {
+  transition: transform 0.15s cubic-bezier(0.2, 1.4, 0.4, 1), box-shadow 0.15s ease;
+  &:active:not(:disabled) { transform: scale(0.95); }
+}
+@utility neon {
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.18), 0 0 32px var(--brand-glow);
+}
+@utility page-glow {
+  background-image: var(--page-glow);
+  background-size: var(--page-glow-size);
+  background-attachment: fixed;
+}
+@utility brand-gradient {
+  background-image: linear-gradient(135deg, var(--brand) 0%, var(--accent) 100%);
+}
+@utility funky-text {
+  background-image: linear-gradient(100deg, var(--brand) 0%, var(--accent) 60%, var(--lilac) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+@utility nav-active {
+  background: var(--nav-active);
+  color: var(--nav-active-ink);
+}
+@utility chip-active {
+  background: var(--chip-active);
+  color: var(--chip-active-ink);
+}
+@utility pt-safe { padding-top: max(var(--safe-top), 0.75rem); }
+@utility pb-safe { padding-bottom: var(--safe-bottom); }
+@utility pb-nav { padding-bottom: calc(var(--nav-h) + var(--safe-bottom) + 1.5rem); }
+@utility bottom-nav { bottom: calc(var(--safe-bottom) + 0.75rem); }
+@utility h-screen-d { height: 100dvh; }
+@utility min-h-screen-d { min-height: 100dvh; }
+@utility no-scrollbar {
+  scrollbar-width: none;
+  &::-webkit-scrollbar { display: none; }
+}
+@utility skeleton {
+  background: linear-gradient(90deg, var(--surface-2) 25%, var(--line) 37%, var(--surface-2) 63%);
+  background-size: 400% 100%;
+  animation: var(--animate-shimmer);
+}
+@utility tap {
+  min-height: 44px;
+  min-width: 44px;
+}
+
+@media (min-width: 1024px) {
+  :root { --nav-h: 0rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* MapLibre tweaks */
+.maplibregl-ctrl-attrib { font-size: 10px; background: var(--glass) !important; color: var(--muted); }
+.maplibregl-ctrl-attrib a { color: var(--muted) !important; }
+.maplibregl-canvas:focus-visible { outline: none; }
